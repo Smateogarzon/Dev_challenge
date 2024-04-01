@@ -11,6 +11,11 @@
   --grey: #333;
 }
 
+.headerApp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .title {
   font-family: 'Schoolbell', cursive;
   font-weight: 400;
@@ -30,4 +35,9 @@
   margin: 0 -0.5ch;
   vertical-align: middle;
   padding-inline: 25px;
+}
+.containerItems {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
