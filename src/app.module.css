@@ -41,3 +41,36 @@
   width: 100%;
   justify-content: center;
 }
+.containerFilters {
+  position: relative;
+  padding-top: 15px;
+}
+
+.containerFilters .containerSelects {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.containerFilters .containerSelects select {
+  background: rgba(107, 238, 0, 0.774);
+  width: 16%;
+  color: rgba(255, 255, 255, 0.945);
+  border-radius: 0 8rem;
+  text-align: center;
+  font-size: calc(0.5rem + 1vw);
+  font-family: 'Schoolbell', cursive;
+}
+.containerFilters .containerSelects option {
+  color: rgba(47, 0, 255, 0.842);
+  font-size: 23px;
+}
+.containerFilters .containerSelects button {
+  background: rgba(107, 238, 0, 0.774);
+  width: 16%;
+  color: rgba(255, 255, 255, 0.945);
+  border-radius: 1rem;
+  text-align: center;
+  font-size: calc(0.5rem + 1vw);
+  font-family: 'Schoolbell', cursive;
+}

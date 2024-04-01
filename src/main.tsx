@@ -5,7 +5,7 @@ import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/c
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: new HttpLink({ uri: 'http://localhost:4000/' }),
+  link: new HttpLink({ uri: 'https://dev-challenge-o8q3.onrender.com' }),
 });
 
 const rootElement = document.getElementById('root');

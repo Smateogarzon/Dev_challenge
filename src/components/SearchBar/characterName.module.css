@@ -1,4 +1,8 @@
 .container {
   display: flex;
   border-bottom: 2px solid var(--green);
+  padding: 5px;
+}
+.container:last-child {
+  border-bottom: none;
 }

@@ -1,21 +1,13 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
-import { gql, useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client';
 import Loader from '../loader/loader';
 import CharacterNameResults from './characteNameResults';
-
-const getCharctersName = gql`
-  query findName($name: String) {
-    nameCharacters(filter: $name) {
-      id
-      name
-      image
-    }
-  }
-`;
+import { getCharctersName } from '../../../graphql/querys';
 
 function searchBar() {
   const [getCharctersN, result] = useLazyQuery(getCharctersName);
+  console.log('🚀 ~ searchBar ~ result:', result);
 
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,12 +34,13 @@ function searchBar() {
         type='search'
         id='busqueda'
         onChange={handleChage}
-        placeholder='Add Character'
+        placeholder='Name Character'
         className={styles.charId}
         value={name}
       />
-      <div className={styles.loaderContainer}>
-        {loading ? (
+
+      <div className={styles.containerResults}>
+        {loading && name !== '' ? (
           <Loader />
         ) : name !== '' ? (
           <CharacterNameResults characters={result.data?.nameCharacters} />
