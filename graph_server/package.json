@@ -14,12 +14,12 @@
   "dependencies": {
     "apollo-server": "^3.13.0",
     "axios": "^1.6.8",
-    "graphql": "^15.6.0"
+    "graphql": "^15.6.0",
+    "typescript": "^5.4.3"
   },
   "devDependencies": {
     "@types/node": "^20.12.2",
     "nodemon": "^3.1.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.4.3"
+    "ts-node": "^10.9.2"
   }
 }
