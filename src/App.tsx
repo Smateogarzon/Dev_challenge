@@ -1,13 +1,11 @@
 // import { useState } from 'react';
 import SearchBar from './components/SearchBar/searchBar';
 import Loader from '../src/components/loader/loader';
-import { ICharacter } from './interface/searchBarInterface';
 import styles from './app.module.css';
 
 function App() {
   // const [count, setCount] = useState < number > 0;
-  let f = '';
-  f = 1;
+
   return (
     <header className={styles.headerApp}>
       <h1 className={styles.title}>
