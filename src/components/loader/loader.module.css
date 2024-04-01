@@ -1,0 +1,29 @@
+@keyframes agrandar {
+  0% {
+    transform: scale(0.5);
+  }
+  20% {
+    transform: scale(1.2); /* La imagen crece más allá de su tamaño normal */
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.1); /* Rebota un poco */
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}
+
+.container img {
+  width: 15%;
+  image-rendering: crisp-edges;
+  animation-name: agrandar;
+  animation-duration: 2s; /* La animación completa dura 2 segundos */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
