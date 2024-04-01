@@ -3,7 +3,6 @@ import styles from './app.module.css';
 
 function App() {
   // const [count, setCount] = useState < number > 0;
-  var x: number = 0;
   return (
     <header>
       <h1 className={styles.title}>
