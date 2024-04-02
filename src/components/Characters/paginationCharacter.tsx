@@ -36,7 +36,7 @@ function paginationCharacter({ filter }: ICharacterFilter) {
         ))}
       </div>
       <div>
-        <button onClick={() => numPage > 1 && setNumPage(numPage - 1)}>Previus</button>
+        <button onClick={() => numPage > 1 && setNumPage(numPage - 1)}>Previous</button>
         <div>
           <input type='number' value={numPage} onChange={changePage} />
           <p>/</p>
