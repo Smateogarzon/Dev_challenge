@@ -9,3 +9,21 @@ export const getCharctersName = gql`
     }
   }
 `;
+
+export const getFilterCharcters = gql`
+  query filterCharacters($filter: FilterInput) {
+    filterCharacters(filter: $filter) {
+      id
+      name
+      image
+      status
+      species
+      type
+      gender
+      origin {
+        name
+      }
+      image
+    }
+  }
+`;

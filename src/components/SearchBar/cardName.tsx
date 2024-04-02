@@ -1,4 +1,4 @@
-import { ICharacter } from '../../interface/searchBarInterface';
+import { ICharacter } from '../../interface/Interface';
 import style from './cardName.module.css';
 
 function cardName({ character }: { character: ICharacter }) {

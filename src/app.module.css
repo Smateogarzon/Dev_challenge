@@ -74,3 +74,8 @@
   font-size: calc(0.5rem + 1vw);
   font-family: 'Schoolbell', cursive;
 }
+
+.containerMain {
+  width: 100%;
+  margin-top: 25px;
+}

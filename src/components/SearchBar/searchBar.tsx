@@ -7,7 +7,6 @@ import { getCharctersName } from '../../../graphql/querys';
 
 function searchBar() {
   const [getCharctersN, result] = useLazyQuery(getCharctersName);
-  console.log('🚀 ~ searchBar ~ result:', result);
 
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
