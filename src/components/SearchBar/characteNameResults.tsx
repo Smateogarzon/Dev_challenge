@@ -1,5 +1,5 @@
 import CardName from './cardName';
-import { ICharacter, ICharacterNameResults } from '../../interface/searchBarInterface';
+import { ICharacter, ICharacterNameResults } from '../../interface/Interface';
 import styles from './characterName.module.css';
 
 function CharacterNameResults({ characters }: ICharacterNameResults) {
