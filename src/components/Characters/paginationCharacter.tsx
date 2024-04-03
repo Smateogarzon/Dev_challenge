@@ -28,16 +28,31 @@ function paginationCharacter({ filter }: ICharacterFilter) {
     if (parseInt(value) < 1 || parseInt(value) > page) return;
     setNumPage(parseInt(value));
   };
+
+  const input = document.querySelector("input[type='number']");
+
+  input?.addEventListener('wheel', (event) => {
+    event.preventDefault();
+  });
   return (
     <div className={styles.container}>
       <div className={styles.containerCard}>
-        {currentPage[numPage - 1]?.map((character: Character) => (
-          <CardCharacter key={character.id} character={character} />
-        ))}
+        {currentPage.length > 0 ? (
+          currentPage[numPage - 1]?.map((character: Character) => (
+            <CardCharacter key={character.id} character={character} />
+          ))
+        ) : (
+          <>
+            <div className={styles.NaN}>
+              {' '}
+              <p>There are no results</p>
+            </div>
+          </>
+        )}
       </div>
-      <div>
-        <button onClick={() => numPage > 1 && setNumPage(numPage - 1)}>Previous</button>
-        <div>
+      <div className={styles.containerButton}>
+        <button onClick={() => numPage > 1 && setNumPage(numPage - 1)}>Prev</button>
+        <div className={styles.containerPage}>
           <input type='number' value={numPage} onChange={changePage} />
           <p>/</p>
           <span>{page}</span>
