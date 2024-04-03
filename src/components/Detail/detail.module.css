@@ -86,12 +86,17 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .container {
+    height: 25%;
+    gap: 0;
+  }
   .infoContainer {
-    margin-top: 25%;
+    margin-top: 10%;
     border-radius: 10px;
     flex-direction: column;
     width: 90%;
   }
+
   .image {
     border-right: none;
     border-bottom: 2px solid var(--green);
