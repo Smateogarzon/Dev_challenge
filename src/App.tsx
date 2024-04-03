@@ -17,6 +17,7 @@ function App() {
   const [filters, setFilters] = useState<Ifilter>({ all: true });
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState('');
+  const [showResults, setShowResults] = useState(false);
 
   useEffect(() => {
     if (result.loading) {
@@ -44,6 +45,7 @@ function App() {
       status: 'all',
     });
     setName('');
+    setShowResults(false);
   };
   return (
     <>
@@ -54,7 +56,13 @@ function App() {
           Morty
         </h1>
         <div className={styles.containerItems}>
-          <SearchBar name={name} setName={setName} handleChange={handleChange} />
+          <SearchBar
+            name={name}
+            setName={setName}
+            handleChange={handleChange}
+            showResults={showResults}
+            setShowResults={setShowResults}
+          />
         </div>
         {location.pathname === '/' && (
           <div className={styles.containerFilters}>
