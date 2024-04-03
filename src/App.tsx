@@ -9,12 +9,14 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { Ifilter } from './interface/Interface';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Detail from './components/Detail/Detail';
+
 function App() {
   const location = useLocation();
   const [getFilters, result] = useLazyQuery(getFilterCharcters);
   const [Reset, setReset] = useState<Ifilter>({ species: 'all', gender: 'all', status: 'all' });
   const [filters, setFilters] = useState<Ifilter>({ all: true });
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     if (result.loading) {
@@ -41,6 +43,7 @@ function App() {
       gender: 'all',
       status: 'all',
     });
+    setName('');
   };
   return (
     <>
@@ -51,7 +54,7 @@ function App() {
           Morty
         </h1>
         <div className={styles.containerItems}>
-          <SearchBar />
+          <SearchBar name={name} setName={setName} handleChange={handleChange} />
         </div>
         {location.pathname === '/' && (
           <div className={styles.containerFilters}>

@@ -32,4 +32,5 @@ export interface Ifilter {
   gender?: string;
   species?: string;
   all?: boolean;
+  name?: string;
 }
