@@ -1,3 +1,5 @@
+---
 layout: page
-title: "detail"
+title: 'detail'
 permalink: /detail
+---
