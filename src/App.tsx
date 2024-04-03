@@ -39,7 +39,6 @@ function App() {
       gender: 'all',
       status: 'all',
     });
-    console.log(Reset);
   };
   return (
     <>
