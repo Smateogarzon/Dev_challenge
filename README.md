@@ -3,6 +3,8 @@
 Nombre postulante: Steven Mateo Garzon Garcia
 Link a la app en producción:[ \[LINK DEL DEPLOY\]](https://dev-challenge-three.vercel.app/)
 
+Nota: Hice mi servidor de GraphQL y está alojado en Render. Por esta razón, el proyecto tarda un minuto en levantarse al iniciarse, ya que está en una versión gratuita. Después del minuto, todo funciona muy bien.
+
 ## Instrucciones
 
 - Desarrolla una aplicación web con React y Vite que permita a los usuarios buscar y visualizar información sobre personajes de la serie "Rick and Morty" utilizando la [Api de Rick and Morty](https://rickandmortyapi.com/documentation/#graphql)
