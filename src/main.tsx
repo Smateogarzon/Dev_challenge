@@ -14,7 +14,7 @@ if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <ApolloProvider client={client}>
-        <BrowserRouter basename='/dev_challenge'>
+        <BrowserRouter>
           <App />
         </BrowserRouter>
       </ApolloProvider>
