@@ -27,6 +27,11 @@ function searchBar() {
     }
   }, [result]);
 
+  const handleReset = () => {
+    setName('');
+    getCharctersN({ variables: { name: '' } });
+  };
+
   return (
     <div className={styles.inputContainer}>
       <input
@@ -42,7 +47,7 @@ function searchBar() {
         {loading && name !== '' ? (
           <Loader />
         ) : name !== '' ? (
-          <CharacterNameResults characters={result.data?.nameCharacters} />
+          <CharacterNameResults characters={result.data?.nameCharacters} reset={handleReset} />
         ) : null}
       </div>
     </div>

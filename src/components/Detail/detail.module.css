@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 50vh;
+}
+.btn {
+  position: relative;
+  background: linear-gradient(135deg, rgba(59, 255, 163, 0.87) 20%, rgba(0, 162, 255, 0.842) 100%);
+  border-radius: 0 1rem;
+  height: 50px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn span {
+  position: absolute;
+  top: 0;
+  font-size: 20px;
+  background: #0f0e0e;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.btn span::before {
+  position: absolute;
+  content: '';
+  height: 8px;
+  width: 8px;
+  background: #0c0c0c;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.btn:hover span {
+  top: -20px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.infoContainer {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: rgba(60, 60, 60, 0.717);
+  border-radius: 0 7rem;
+  width: fit-content;
+}
+.image {
+  border-right: 2px solid var(--green);
+}
+.image img {
+  border-radius: 50%;
+  padding-inline: 10px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 15px;
+}
+
+.info span {
+  display: flex;
+  gap: 10px;
+  text-align: left;
+  align-items: center;
+  font-size: 18px;
+}
+
+.info span p {
+  font-weight: bold;
+  font-size: 25px;
+  margin: 0;
+  color: rgba(0, 187, 255, 0.901);
+}
+
+@media screen and (max-width: 1024px) {
+  .infoContainer {
+    margin-top: 25%;
+    border-radius: 10px;
+    flex-direction: column;
+    width: 90%;
+  }
+  .image {
+    border-right: none;
+    border-bottom: 2px solid var(--green);
+  }
+  .image img {
+    width: 300px;
+  }
+  .info {
+    align-items: center;
+  }
+}
+@media screen and (max-width: 425px) {
+  .infoContainer {
+    border-radius: 10px;
+    flex-direction: column;
+    width: 90%;
+  }
+  .image {
+    border-right: none;
+    border-bottom: 2px solid var(--green);
+  }
+  .image img {
+    width: 200px;
+  }
+  .info {
+    align-items: flex-start;
+  }
+}

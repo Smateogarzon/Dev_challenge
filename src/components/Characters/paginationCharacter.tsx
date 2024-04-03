@@ -4,11 +4,16 @@ import { CharacterArray } from '../../interface/Interface';
 import CardCharacter from './cardCharacter';
 import styles from './paginationCharacter.module.css';
 
-function paginationCharacter({ filter }: ICharacterFilter) {
+function paginationCharacter({ filter, nameFilter }: ICharacterFilter) {
   const [page, setPage] = useState<number>(0);
   const [numPage, setNumPage] = useState<number>(1);
   const [currentPage, setCurrentPage] = useState<CharacterArray>([]);
-
+  const handleClickScroll = () => {
+    const element = document.body;
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   useEffect(() => {
     const numPage: number = Math.ceil(filter?.length / 20);
     setPage(numPage);
@@ -27,6 +32,7 @@ function paginationCharacter({ filter }: ICharacterFilter) {
     const { value } = event.target;
     if (parseInt(value) < 1 || parseInt(value) > page) return;
     setNumPage(parseInt(value));
+    handleClickScroll();
   };
 
   const input = document.querySelector("input[type='number']");
@@ -43,21 +49,35 @@ function paginationCharacter({ filter }: ICharacterFilter) {
           ))
         ) : (
           <>
-            <div className={styles.NaN}>
-              {' '}
-              <p>There are no results</p>
-            </div>
+            {nameFilter.all === false && (
+              <div className={styles.NaN}>
+                {' '}
+                <p>There are no results</p>
+              </div>
+            )}
           </>
         )}
       </div>
       <div className={styles.containerButton}>
-        <button onClick={() => numPage > 1 && setNumPage(numPage - 1)}>Prev</button>
+        <button
+          onClick={() => {
+            numPage > 1 && setNumPage(numPage - 1);
+            handleClickScroll();
+          }}>
+          Prev
+        </button>
         <div className={styles.containerPage}>
           <input type='number' value={numPage} onChange={changePage} />
           <p>/</p>
           <span>{page}</span>
         </div>
-        <button onClick={() => numPage < page && setNumPage(numPage + 1)}>Next</button>
+        <button
+          onClick={() => {
+            numPage < page && setNumPage(numPage + 1);
+            handleClickScroll();
+          }}>
+          Next
+        </button>
       </div>
     </div>
   );
