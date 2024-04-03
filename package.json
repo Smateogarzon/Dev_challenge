@@ -11,7 +11,8 @@
     "reset": "rm -rf node_modules/ package-lock.json && npm i",
     "clean": "rm -rf node_modules/ package-lock.json",
     "format": "prettier --write \"./**/*.{js,ts,jsx,tsx,json,css}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "homepage": "https://smateogarzon.github.io/dev_challenge"
   },
   "dependencies": {
     "@apollo/client": "^3.9.9",
