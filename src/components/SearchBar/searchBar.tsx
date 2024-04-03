@@ -4,17 +4,29 @@ import { useLazyQuery } from '@apollo/client';
 import Loader from '../loader/loader';
 import CharacterNameResults from './characteNameResults';
 import { getCharctersName } from '../../../graphql/querys';
+import { GrView } from 'react-icons/gr';
 
-function searchBar() {
+function searchBar({
+  name,
+  setName,
+  handleChange,
+}: {
+  name: string;
+  setName: Function;
+  handleChange: Function;
+}) {
   const [getCharctersN, result] = useLazyQuery(getCharctersName);
+  const [showResults, setShowResults] = useState(false);
 
-  const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
-  const handleChage = (event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChageInput = (event: ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
     setName(value);
+    handleChange(event);
   };
-
+  useEffect(() => {
+    setShowResults(!showResults);
+  }, []);
   useEffect(() => {
     getCharctersN({ variables: { name } });
   }, [name]);
@@ -37,16 +49,24 @@ function searchBar() {
       <input
         type='search'
         id='busqueda'
-        onChange={handleChage}
+        onChange={handleChageInput}
         placeholder='Name Character'
         className={styles.charId}
         value={name}
+        name='name'
       />
+      {name !== '' && (
+        <div className={styles.icon} onClick={() => setShowResults(!showResults)}>
+          <span>
+            <GrView />
+          </span>
+        </div>
+      )}
 
       <div className={styles.containerResults}>
         {loading && name !== '' ? (
           <Loader />
-        ) : name !== '' ? (
+        ) : name !== '' && !showResults ? (
           <CharacterNameResults characters={result.data?.nameCharacters} reset={handleReset} />
         ) : null}
       </div>

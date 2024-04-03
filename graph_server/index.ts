@@ -1,4 +1,4 @@
-const {ApolloServer, gql} = require('apollo-server');
+const { ApolloServer, gql } = require('apollo-server');
 const axios = require('axios');
 
 interface Ifilter {
@@ -6,6 +6,7 @@ interface Ifilter {
   gender: string;
   species: string;
   all: boolean;
+  name: string;
 }
 
 interface ICharacter {
@@ -32,6 +33,7 @@ const typeDefs = gql`
     gender: String
     species: String
     all: Boolean
+    name: String
   }
   type Character {
     id: ID
@@ -51,33 +53,33 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    nameCharacters: async (_: any, {filter}: {filter: string}) => {
+    nameCharacters: async (_: any, { filter }: { filter: string }) => {
       try {
         const response = await axios.get(
-          `https://rickandmortyapi.com/api/character/?name=${filter}`,
+          `https://rickandmortyapi.com/api/character/?name=${filter}`
         );
 
-        const characters = response.data.results.slice(0, 5);
+        const characters = response.data.results.slice(0, 10);
 
         return characters;
       } catch (error) {
         throw 'el personaje no existe';
       }
     },
-    filterCharacters: async (_: any, {filter}: {filter: Ifilter}) => {
+    filterCharacters: async (_: any, { filter }: { filter: Ifilter }) => {
       try {
         let urlFilter: string = 'https://rickandmortyapi.com/api/character/?';
         if (filter.status) urlFilter += `status=${filter.status}&`;
         if (filter.gender) urlFilter += `gender=${filter.gender}&`;
         if (filter.species) urlFilter += `species=${filter.species}&`;
-        if (filter.all)
-          urlFilter = 'https://rickandmortyapi.com/api/character/?';
-        const {data} = await axios.get(urlFilter);
+        if (filter.name) urlFilter += `name=${filter.name}&`;
+        if (filter.all) urlFilter = 'https://rickandmortyapi.com/api/character/?';
+        const { data } = await axios.get(urlFilter);
 
         let characters: ICharacter[] = data.results;
         if (data.info.pages > 1) {
           for (let i = 2; i <= data.info.pages; i++) {
-            const {data} = await axios.get(`${urlFilter}&page=${i}`);
+            const { data } = await axios.get(`${urlFilter}&page=${i}`);
             characters = [...characters, ...data.results];
           }
 
@@ -86,11 +88,9 @@ const resolvers = {
         return characters;
       } catch (error) {}
     },
-    characterId: async (_: any, {id}: {id: number}) => {
+    characterId: async (_: any, { id }: { id: number }) => {
       try {
-        const {data} = await axios.get(
-          `https://rickandmortyapi.com/api/character/${id}`,
-        );
+        const { data } = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
         return data;
       } catch (error) {
         throw 'el personaje no existe';
@@ -99,8 +99,8 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({typeDefs, resolvers});
+const server = new ApolloServer({ typeDefs, resolvers });
 
-server.listen().then(({url}: {url: string}) => {
+server.listen().then(({ url }: { url: string }) => {
   console.log(`Servidor listo en ${url}`);
 });

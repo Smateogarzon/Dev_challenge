@@ -50,3 +50,20 @@
     -10px -10px 40px #383e4b;
   flex-direction: column;
 }
+
+.icon {
+  position: absolute;
+  right: 6%;
+  top: 38%;
+}
+
+@media (max-width: 800px) {
+  .icon {
+    right: 11%;
+  }
+}
+@media (max-width: 375px) {
+  .icon {
+    right: 16%;
+  }
+}
