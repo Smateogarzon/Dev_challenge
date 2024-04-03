@@ -26,10 +26,12 @@ function App() {
       setLoading(false);
     }
   }, [result]);
+  console.log('🚀 ~ App ~ result:', result.data);
 
   useEffect(() => {
     getFilters({ variables: { filter: filters } });
   }, [filters]);
+  console.log('🚀 ~ App ~ filters:', filters);
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value, name } = event.target;

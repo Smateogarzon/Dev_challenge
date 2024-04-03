@@ -55,6 +55,7 @@ function searchBar({
         placeholder='Name Character'
         className={styles.charId}
         value={name}
+        name='name'
       />
       {name !== '' && (
         <div className={styles.icon} onClick={() => setShowResults(!showResults)}>
