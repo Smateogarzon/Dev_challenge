@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import { ApolloClient, HttpLink, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { BrowserRouter } from 'react-router-dom';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -13,7 +14,9 @@ if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <ApolloProvider client={client}>
-        <App />
+        <BrowserRouter basename='/Dev_challenge'>
+          <App />
+        </BrowserRouter>
       </ApolloProvider>
     </React.StrictMode>
   );

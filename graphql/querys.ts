@@ -27,3 +27,20 @@ export const getFilterCharcters = gql`
     }
   }
 `;
+
+export const getCharctersId = gql`
+  query getCharctersId($id: ID!) {
+    characterId(id: $id) {
+      name
+      image
+      status
+      species
+      type
+      gender
+      origin {
+        name
+      }
+      image
+    }
+  }
+`;

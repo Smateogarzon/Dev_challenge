@@ -20,9 +20,11 @@ export type Character = {
 export type CharacterArray = Character[][];
 export interface ICharacterNameResults {
   characters: ICharacter[];
+  reset: () => void;
 }
 export interface ICharacterFilter {
   filter: Character[];
+  nameFilter: Ifilter;
 }
 
 export interface Ifilter {
