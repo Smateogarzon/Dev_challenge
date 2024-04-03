@@ -56,7 +56,28 @@
   right: 6%;
   top: 38%;
 }
+.icon .spanred {
+  color: red;
+}
+.icon .spangreen {
+  color: #24ee09af;
+}
+@keyframes fadeEffect {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+.icon .spanred,
+.icon .spangreen {
+  animation: fadeEffect 2s infinite;
+}
 @media (max-width: 800px) {
   .icon {
     right: 11%;

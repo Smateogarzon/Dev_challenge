@@ -10,13 +10,16 @@ function searchBar({
   name,
   setName,
   handleChange,
+  showResults,
+  setShowResults,
 }: {
   name: string;
   setName: Function;
   handleChange: Function;
+  showResults: boolean;
+  setShowResults: Function;
 }) {
   const [getCharctersN, result] = useLazyQuery(getCharctersName);
-  const [showResults, setShowResults] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const handleChageInput = (event: ChangeEvent<HTMLInputElement>): void => {
@@ -24,9 +27,7 @@ function searchBar({
     setName(value);
     handleChange(event);
   };
-  useEffect(() => {
-    setShowResults(!showResults);
-  }, []);
+
   useEffect(() => {
     getCharctersN({ variables: { name } });
   }, [name]);
@@ -34,6 +35,7 @@ function searchBar({
   useEffect(() => {
     if (result.loading) {
       setLoading(true);
+      setShowResults(false);
     } else {
       setLoading(false);
     }
@@ -53,11 +55,10 @@ function searchBar({
         placeholder='Name Character'
         className={styles.charId}
         value={name}
-        name='name'
       />
       {name !== '' && (
         <div className={styles.icon} onClick={() => setShowResults(!showResults)}>
-          <span>
+          <span className={`${!showResults ? styles.spanred : styles.spangreen}`}>
             <GrView />
           </span>
         </div>
